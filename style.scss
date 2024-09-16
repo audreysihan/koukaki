@@ -1,0 +1,696 @@
+/*
+ Theme Name:  Fleurs d'orangers et chats errants - Oscars Short
+ Theme URI: https://www.koukaki.local
+ Author: Studio Koukaki
+ Author URI: https://www.koukaki.local
+ Template: foce
+ Description: Thème enfant à l'ocasion de la nomination aux Oscars Shorts
+ Version: 0.1
+ */
+
+/*mettre les sections en fondu*/
+
+#header {animation: 1s fadeIn forwards;}
+#banner {animation: 1s fadeIn forwards;animation-delay: 1s;}
+#story {animation: 1s fadeIn forwards; animation-delay: 2s;}
+#place {animation: 1s fadeIn forwards; animation-delay: 3s;}
+#studio {animation: 1s fadeIn forwards; animation-delay: 4s;}
+#oscar {animation: 1s fadeIn forwards; animation-delay: 5s;}
+
+@keyframes fadeIn{
+    0%{
+        transform: scaleX(0);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+}
+
+#header, #banner, #story {
+    transform: scaleX(0);
+}
+
+/* ajout des fleurs au menu - rotations */
+
+.section-oscars {
+    position: relative;
+      
+    &::before {
+      content: url('../foce/assets/images/Sunflower.png');
+      position: absolute;
+      left: 15em;
+      top: 0em;
+    }
+    &::after {
+      content: url('../foce/assets/images/orchid.png');
+      position: absolute;
+      right: -4em;
+      top: 0;
+  
+    }
+}
+
+.site-footer{
+    &::before, &::after{
+        display: none;
+    }
+}
+#studio h2::after, #studio h2::before, .story h2::after, .section-oscars::before, .section-oscars::after, .story__article::after {
+    animation: rotate-flower 10s linear infinite;
+    }
+    
+    @keyframes rotate-flower {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+
+/*  Section nomination  */
+
+.section-oscars-texte {
+    background-image: url(asset/images/Rectangle.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 178px;
+    width: 500px;
+ }
+
+.section-oscars-texte p {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.section-oscars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding: 80px;
+}
+
+/* video*/
+
+video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    }
+    
+    h1, h2, #btnVideo{
+    
+    color: white;
+    
+    font-family: Trebuchet MS;
+    
+    font-weight: bold;
+    
+    text-align: center;
+    
+    }
+    
+    h1 {
+    font-size: 6rem;
+    margin-top: 30vh;
+    }
+    
+    h2 { font-size: 3rem; }
+    
+    #btnVideo{
+    font-size: 1.5rem;
+    background: 0;
+    border: 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    }
+
+    img.animation-titre {
+        position: relative;
+        z-index: 2;
+    }
+
+    .banner {
+            position: relative;
+    }
+
+    /* Ajout du titre sur la vidéo */
+
+    .banner {
+    position: relative;
+    overflow: hidden;
+    }
+
+    .banner img {
+    position: absolute;
+    animation: floated 4s ease infinite;
+    }
+
+
+    /*flottement titre*/
+
+    .h2 {animation: floated;}
+
+    @keyframes floated {
+        0% {
+            transform: translate(3%, 3%);
+        }
+        50% {
+            transform: translate(-2%, 3%);
+        }
+        75% {
+            transform: translate(3%, -2%);
+        }
+        100% {
+            transform: translate(3%, 3%);
+        }
+    }
+
+    /* Ajout de l'image en background*/
+
+    img.image-place{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    div {
+        position: relative;
+        z-index: 2;
+    }
+
+    img.big-cloud {
+        z-index: 2;
+    }
+
+    img.small-cloud {
+        z-index: 2;
+    }
+    
+
+
+    /* Effet de parallaxe sur les nuages */
+
+.story #place {
+    background-image: url(/asset/images/Studio_Koukaki-image_place.png);
+}
+#place {
+    position: relative;
+}
+.big-cloud {
+    position: absolute;
+    top: 80px;
+    right: -200px;
+    filter: blur(15px);
+    transform: translate3d(300px, 0, 0);
+}
+.small-cloud {
+    position: absolute;
+    top: 300px;
+    right: 220px;
+    filter: blur(15px);
+    transform: translate3d(300px, 0, 0)
+}
+
+
+/*-----------------ajout du menu de navigation---------------- */
+
+/* création du menu burger */
+
+.main-navigation {
+    position: relative;
+    display: flex;
+    justify-content: center;    
+}
+
+.burger {
+    width: 42px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+}
+
+.line{
+    width: 35px !important;
+    height: 1px!important;
+    background-color: black;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.5s ease-in-out ;
+}
+
+.line::before, .line::after {
+    content: ''; 
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.line::before {
+    transform: translateY(-8px);
+}
+
+.line::after {
+    transform: translateY(8px);
+}
+
+/* class active au clic du burger */
+
+.burger.active span {
+    background-color: transparent
+}
+
+.burger.active span::before {
+    transform: translateY(0px) rotateZ(45deg);
+}
+
+.burger.active span::after {
+    transform: translateY(0px) rotateZ(-45deg);
+}
+
+/* pour que le titre soit sur la barre de navigation */
+
+.titre-site {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px!important;
+    text-decoration: none;
+}
+
+.main-navigation a {
+    color: black;
+}
+
+
+.menu-toggle {
+	background: none;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 20px;
+	margin: 0;
+	position: absolute;
+	right: 0;
+	top: 15px;
+}
+
+.main-navigation.toggled ul {
+    display: none;
+}
+
+/* menu de navigation */
+.nav-menu {
+    background-color: #FFF5E9;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+}
+  
+.is-active {
+    display: flex!important;
+    flex-direction: column;
+    justify-content: center;
+}
+  
+.is-active li {
+   font-size: 30px;
+}
+
+.is-active li:hover {
+    color: #FF5C00;
+    text-shadow: 0 0 5px #FF5C00;
+}
+
+.main-navigation ul {
+    display: none;
+}
+
+.menu .logo:hover {
+    cursor: pointer;
+    filter: drop-shadow(0 0 12px #FF5C00);
+}
+
+.menu .logo {
+    height: 172px;
+    column-gap: 20px;
+}
+
+.is-active li {
+    font-size: 40px;
+    margin: -40px;
+    }
+ 
+
+/* effet d'apparition du menu de navigation en fade-in */
+.menu {
+    animation: fade-in-menu 0.5s linear;
+    opacity: 1;
+    position: fixed;
+    top: 80px;
+    z-index: 0;
+    height: calc(100vh - 72px);
+    
+}
+
+@keyframes fade-in-menu {
+    
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/*effet d’apparition des titres du menu de navigation */
+
+.menu li {
+    opacity: 0;
+    transform: translate(0, 50%);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+  
+.menu .animes {
+    opacity: 1;
+    transform: none
+}
+
+/* ajout des fleurs au menu - rotations */
+
+.fleur-blanche {
+    position: absolute;
+    right: 225px;
+    top: 80px;
+    height: 185px;
+}
+
+.hibiscus {
+    position: absolute;
+    right: -132px;
+    bottom: -66px;
+    width: 279px;
+}
+
+.fleur-violette{
+    position: absolute;
+    right: 27px;
+    top: 275px;
+    width: 60px;
+}
+
+.orchid {
+    position: absolute;
+    left: 10px;
+    top: 70px;
+}
+
+.fleur-orange {
+    position: absolute;
+    left: 302px 
+}
+
+.fleur-blanche, .hibiscus, .fleur-violette, .orchid, .fleur-orange {
+    animation: rotate-flower 10s linear infinite;
+    }
+    
+    @keyframes rotate-flower {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+/*ajout des chats plus effet de flottement */
+
+.chat-noir {
+    position: absolute;
+    right: 305px;
+    bottom: 265px;
+    height: 100px;
+}
+
+.chat-bleu {
+    position: absolute;
+    right: 1211px;
+    bottom: 515px;
+    height: 100px;
+}
+
+.chat-orange {
+    position: absolute;
+    right: 1314px;
+    bottom: 104px;
+    height: 80px;
+}
+
+.chat-noir {
+    animation: floated 2s ease infinite;
+}
+
+@keyframes floated {
+    0% {
+        transform: translate(3%, 3%);
+    }
+    50% {
+        transform: translate(-2%, 3%);
+    }
+    75% {
+        transform: translate(3%, -2%);
+    }
+    100% {
+        transform: translate(3%, 3%);
+    }
+
+    }
+
+.chat-bleu, .chat-orange {
+    animation: floatedBlue 2s ease infinite;
+}
+
+@keyframes floatedBlue {
+    0% {
+        transform: translate(-3%, -4%);
+    }
+    50% {
+        transform: translate(-3%, 4%);
+    }
+    75% {
+        transform: translate(2%, -2%);
+    }
+    100% {
+        transform: translate(-3%, -4%);
+    }
+}
+
+.chat-orange {
+    animation: floatedOrange 2s ease infinite;
+}
+
+@keyframes floatedOrange {
+    0% {
+        transform: translate(1%, 5%);
+    }
+    50% {
+        transform: translate(-5%, 2%);
+    }
+    75% {
+        transform: translate(4%, -4%);
+    }
+    100% {
+        transform: translate(1%, 5%);
+    }
+}
+
+/*-------------------- Mise en place Carrousel------------------- */
+
+.swiper {
+    width: 100%;
+    }
+
+.swiper-wrapper {
+    height: 100%;
+    }
+
+.story #characters {
+    margin: 6em 0;
+    }
+
+
+/*---------------- Pour desactiver la vidéo sur la version mobile----------------------*/
+
+@media (max-width: 767px) {
+    video {
+        display: none;
+    }
+    }
+
+/*----------------- media queries------------------- */
+/* media queris smartphone */
+@media (max-width: 600px) {
+
+
+    .menu-toggle {
+        top: 15px!important;
+    }
+
+    .main-navigation {
+        height: 80px;
+    }
+
+    h2, h3 {
+        font-size: 30px;
+    }
+
+    .titre-site {
+        font-size: 14px!important;
+    }
+
+    .banner img {
+        width: 80%;   
+    }
+
+    .big-cloud {
+        right: 294px;
+        top: 61px;
+    }
+
+    .small-cloud {
+        right: -394px;
+        top: 540px; 
+    }
+
+    .section-oscars-texte p {
+        font-size: 9px;
+        padding: 0;
+    }
+
+    .section-oscars-texte {
+        height: 62px;
+        width: 688px;
+    }
+
+    .section-oscars {
+        padding: 42px;
+    }
+
+    .orchid {
+        position: absolute;
+        left: 297px;
+        top: 70px;
+        width: 94px;
+    }
+
+    .fleur-blanche {
+        position: absolute;
+        right: 263px!important;
+        top: 22px!important;
+        height: 97px!important;
+    }
+    .fleur-violette {
+        position: absolute;
+        right: 307px!important;
+        top: 230px!important;
+        width: 60px!important;
+    }
+
+    .fleur-orange {
+        position: absolute;
+        left: 14px!important;
+        width: 49px!important;
+    }
+    }
+
+    .section-oscars::after, .section-oscars::before{
+        display: none;
+    }
+
+/* media queris tablette */
+
+@media (max-width: 900px) {
+    
+    .small-cloud {
+        right: 220px;
+        top: 519px; 
+    }
+
+    .fleur-violette {
+        position: absolute;
+        right: 212px;
+        top: 275px;
+        width: 60px;
+    }
+
+    .fleur-blanche {
+        position: absolute;
+        right: 39px;
+        top: 80px;
+        height: 185px;
+    }
+    .fleur-orange {
+        position: absolute;
+        left: 151px;
+    }
+
+    .chat-noir {
+        position: absolute;
+        right: 631px;
+        bottom: 265px;
+        height: 100px;
+    }
+
+    .big-cloud {
+        position: absolute;
+        top: 80px;
+        right: 4px;
+        filter: blur(15px);
+    
+    }
+
+    .small-cloud {
+        right: 23px;
+        top: 519px;
+}
+}
+
+@media (max-width: 1245px) {
+    
+    .small-cloud {
+        right: 220px;
+        top: 519px; 
+    }
+    }
+    
